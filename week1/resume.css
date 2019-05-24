@@ -20,7 +20,7 @@ h2 {text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); }
 
 header::before {
     content: "";
-    background-image: url("bg.jpg"), linear-gradient(steelblue, firebrick);
+    background-image: url("img/bg.jpg"), linear-gradient(steelblue, firebrick);
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: multiply;

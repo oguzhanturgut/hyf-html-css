@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.75;
+}
+
+h1, h2 {
+    font-weight: 700;
+    margin: 0;
+    padding: 5px;
+}
+
+h1 {font-size: 3rem; }
+
+h2 {text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); }
+
+header::before {
+    content: "";
+    background-image: url("bg.jpg"), linear-gradient(steelblue, firebrick);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    width: 100%;
+    height: 60vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+header {
+    max-width: 100%;
+    height: 60vh;
+    margin-bottom: 75px;
+}
+
+@media only screen and (max-width: 720px) {
+    header, header::before {
+        height: 100vh;
+    }
+}
+
+.header__container {
+    margin: 0 auto;
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+.header__img{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header__img img {
+    display: block;
+    width: 125px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0px 5px 25px 0px rgba(175, 149, 149, 0.6);
+}
+
+.icon-container {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -23px;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    font-size: 32px; 
+    color: whitesmoke;
+    margin: 0 5px;
+    background-color: #888;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.4);
+    transition: transform 350ms;
+}
+
+.icon:hover {transform: scale(1.1); }
+
+.icon-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+section {width: 100%; }
+
+.card {
+    border-radius: 0.1875rem;
+    display: flex;
+    margin-bottom: 20px;
+    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+@media only screen and (max-width: 720px) {
+    .about {
+        flex-direction: column;
+    }
+
+}
+
+section.card i {
+    font-size: 3rem;
+    margin-right: 10px;
+    float: left;
+}
+
+div i.small-icon {
+    font-size: 1rem;
+    margin-right: 10px;
+    margin-top: 5px;
+    float: left;
+}
+
+section div {padding: 0 15px; flex: 0 0 50%; }
+
+table td{padding: 7px; }
+
+table td:nth-child(1) {font-weight: 700; }
+
+h5 {
+    font-size: 1.57em;
+    line-height: 1.4em;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 75px;
+    margin-bottom: 30px;
+}
+
+.work{
+    padding: 0; 
+    margin-bottom: 70px;
+    
+
+}
+
+@media only screen and (max-width: 720px){
+    .work {
+        flex-direction: column;
+    }
+    
+}
+
+.work div:nth-child(1) {
+    background-color: rgba(70, 130, 180, .15);
+    flex: 0 0 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.work div:nth-child(2) {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.education {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.education div {
+    flex: 0 0 100%;
+    padding: 20px;
+    display: flex;
+    align-items: baseline;
+}
+
+.links div {flex: 0 0 100%; }
+
+
+.education div * { margin: 0 15px 0 0;}
+
+.card ul {list-style: none; }
+
+.card ul a {color:inherit; text-decoration: none; display: block; }
+
+footer {padding: 24px 0;}
+
+footer a {
+    color: #888;
+    text-decoration: none;
+}
+
+footer .container {
+    width: 100%;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+footer .container i {
+    margin: 0.5rem 0.7rem;
+}
+
+footer .name {
+    font-weight: 700;
+    font-size: 1.7rem;
+    text-align: center;
+    color: #888;
+}

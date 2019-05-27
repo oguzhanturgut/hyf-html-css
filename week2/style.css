@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Spectral+SC:400,700|Merriweather&display=swap');
+
+* {box-sizing: border-box; }
+
+html {font-size: 16px; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.5rem;
+    margin: 0;
+    padding: 0; }
+
+img {
+    display: block;
+    width: 95%;
+    height: auto;
+    margin: auto; }
+
+h1, h2, h3 {
+    font-family: 'Spectral SC', Georgia, serif;
+    clear: both;
+    color: #393399;
+    text-transform: uppercase; }
+
+h1 {font-size: 3rem; text-align: center; font-weight: 700;}
+
+h2 {font-size: 2rem; text-align: center; font-weight: 700;}
+
+h3 {
+    font-size: 1.15rem;
+    text-align: center;
+    margin: 25px 10px 0 10px;
+    font-weight: 400;
+    color: rgb(173, 88, 8); }
+
+.grid-item {
+    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    height: 36rem;
+    display: grid; }
+
+#grid-floats, #grid-flex {width: 100%; padding: 0 0.5rem; }
+
+#grid-floats .grid-item {max-width: calc((100% - 10rem)/4); }
+
+.grid-item img, .grid-item p  {margin: 0 auto; }
+
+ul {list-style: none; }
+
+li {
+    position: relative;
+    top: 0;
+    transition: all .1s ease-in; }
+
+li:hover {
+    top: -5px;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.2); }
+
+li.grid-item {float: left; margin: 2rem 1.25rem; }
+
+ul p {
+    margin: 0;
+    padding: 15px;
+    background: linear-gradient(rgba(255, 128, 8, .2), rgba(255, 200, 55, .1));
+    box-shadow: 0px -5px 8px -5px rgba(0,0,0,0.5); }
+
+#grid-flex { display: flex; flex-flow: row wrap; }
+
+#grid-flex .grid-item {
+    flex: 0 0 calc((100% - 10rem)/4);
+    justify-content: space-between; }
+
+/* SVG Black Friday Sale icon with animation*/
+.grid-item:nth-child(1)::before {
+    content: '';
+    display: block;
+    background-image: url("images/discount.svg");
+    width: 125px;
+    height: 100px;
+    position: absolute;
+    top: 60px;
+    background-size: 125px 100px;
+    animation: discount 2s infinite; }
+
+@keyframes discount {
+0% {transform: scale(1);}
+25% {transform: scale(.97);}
+35% {transform: scale(.9);}
+45% {transform: scale(1.1);}
+55% {transform: scale(.9);}
+65% {transform: scale(1.1);}
+75% {transform: scale(1.03);}
+100% {transform: scale(1);} 
+}
+
+/* Media Queries */
+@media only screen and (min-width: 1080px) {
+    #grid-floats .grid-item:nth-child(1) {max-width: calc((100% - 8rem)/2);}
+    #grid-flex .grid-item:nth-child(1) {flex-basis: calc((100% - 5rem)/2); }
+}
+
+@media only screen and (min-width: 720px) and (max-width:1080px) {
+    #grid-floats .grid-item {max-width: calc((100% - 8rem)/3); }
+    #grid-floats .grid-item:nth-child(-n + 2) {max-width: calc((100% - 6rem)/2); }
+    #grid-flex .grid-item {flex-basis: calc((100% - 8rem)/3); }
+    #grid-flex .grid-item:nth-child(-n + 2) {flex-basis: calc((100% - 8rem)/2); }
+}
+
+@media only screen and (max-width: 720px) {
+    #grid-floats .grid-item {max-width: calc((100% - 6rem)/2); }
+    #grid-floats .grid-item:nth-child(1) {max-width: calc(100% - 4rem); height: 40rem; }
+    #grid-flex .grid-item {flex-basis: calc((100% - 8rem)/2); }
+    #grid-flex .grid-item:nth-child(1) {flex-basis: calc(100% - 5rem); height: 40rem; }
+}

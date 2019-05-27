@@ -4,9 +4,7 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*::after,
-*::before {
+*, *::after, *::before {
   box-sizing: inherit;
 }
 
@@ -24,9 +22,7 @@ img {
   margin: auto;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   font-family: "Spectral SC", Georgia, serif;
   clear: both;
   color: #393399;
@@ -60,8 +56,7 @@ h3 {
   display: grid;
 }
 
-#grid-floats,
-#grid-flex {
+#grid-floats, #grid-flex {
   width: 100%;
   padding: 0 0.5rem;
 }

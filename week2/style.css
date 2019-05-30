@@ -10,6 +10,8 @@ html {
 
 body {
   font-family: "Merriweather", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.5rem;
   margin: 0;
   padding: 0;
@@ -19,7 +21,7 @@ img {
   display: block;
   width: 95%;
   height: auto;
-  margin: auto;
+  margin: 0 auto;
 }
 
 h1, h2, h3 {
@@ -53,6 +55,7 @@ h3 {
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   height: 36rem;
+  margin: 2rem 1.25rem;
   display: grid;
 }
 
@@ -63,9 +66,9 @@ h3 {
 
 #grid-floats .grid-item {
   max-width: calc((100% - 10rem) / 4);
+  float: left;
 }
 
-.grid-item img,
 .grid-item p {
   margin: 0 auto;
 }
@@ -85,11 +88,6 @@ li:hover {
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 }
 
-li.grid-item {
-  float: left;
-  margin: 2rem 1.25rem;
-}
-
 ul p {
   margin: 0;
   padding: 15px;
@@ -107,7 +105,7 @@ ul p {
   justify-content: space-between;
 }
 
-/* SVG Black Friday Sale icon with animation*/
+/* SVG Black Friday Sale icon with heart beat animation*/
 .grid-item:nth-child(1)::before {
   content: "";
   display: block;
@@ -148,48 +146,52 @@ ul p {
 }
 
 /* Media Queries */
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1281px) {
   img {
     width: 60%;
   }
 }
+/* a four column grid, with the exception that the first item spans two columns. */
 @media only screen and (min-width: 1080px) {
   #grid-floats .grid-item:nth-child(1) {
-    max-width: calc((100% - 8rem) / 2);
+    max-width: calc((100% - 5rem) / 2);
   }
   #grid-flex .grid-item:nth-child(1) {
     flex-basis: calc((100% - 5rem) / 2);
   }
 }
-
+/* a three column grid, with the exception that the first two items span the full width together */
 @media only screen and (min-width: 720px) and (max-width: 1080px) {
   #grid-floats .grid-item {
-    max-width: calc((100% - 8rem) / 3);
+    max-width: calc((100% - 7.5rem) / 3);
   }
   #grid-floats .grid-item:nth-child(-n + 2) {
-    max-width: calc((100% - 6rem) / 2);
+    max-width: calc((100% - 5rem) / 2);
   }
   #grid-flex .grid-item {
-    flex-basis: calc((100% - 8rem) / 3);
+    flex-basis: calc((100% - 7.5rem) / 3);
   }
   #grid-flex .grid-item:nth-child(-n + 2) {
-    flex-basis: calc((100% - 8rem) / 2);
+    flex-basis: calc((100% - 5rem) / 2);
   }
 }
-
+/* a two column grid, with the exception that the first item spans the full width */
 @media only screen and (max-width: 720px) {
   #grid-floats .grid-item {
-    max-width: calc((100% - 6rem) / 2);
+    max-width: calc((100% - 5rem) / 2);
   }
   #grid-floats .grid-item:nth-child(1) {
-    max-width: calc(100% - 4rem);
+    max-width: calc(100% - 2.5rem);
     height: 40rem;
   }
   #grid-flex .grid-item {
-    flex-basis: calc((100% - 8rem) / 2);
+    flex-basis: calc((100% - 5rem) / 2);
   }
   #grid-flex .grid-item:nth-child(1) {
-    flex-basis: calc(100% - 5rem);
+    flex-basis: calc(100% - 2.5rem);
     height: 40rem;
+  }
+  .grid-item p {
+    font-size: 0.85rem;
   }
 }

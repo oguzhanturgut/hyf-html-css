@@ -1,4 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Spectral+SC:400,700|Merriweather&display=swap");
+/* CSS variables */
+:root {
+  --grid-item-margin : 1.25rem; /* Controls the margin for grid items */
+  --body-background-color: #e7f3ff;
+  --heading-color: #393399;
+  --box-shadow: rgba(0, 0, 0, 0.3);
+  /* I also tried to make media query variables reusable, but they don't work with media queries. 
+  https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
+   */
+  /* --desktop-min-width: 1080px;
+  --tablet-min-width: 720px;
+  --retina-min-width: 1281px; */
+}
 
 html {
   box-sizing: border-box;
@@ -10,6 +23,7 @@ html {
 
 body {
   font-family: "Merriweather", Georgia, serif;
+  background-color: var(--body-background-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5rem;
@@ -27,7 +41,7 @@ img {
 h1, h2, h3 {
   font-family: "Spectral SC", Georgia, serif;
   clear: both;
-  color: #393399;
+  color: var(--heading-color);
   text-transform: uppercase;
 }
 
@@ -52,10 +66,11 @@ h3 {
 }
 
 .grid-item {
-  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 25px 0px var(--box-shadow);
   border-radius: 5px;
+  background-color: #fff;
   height: 36rem;
-  margin: 2rem 1.25rem;
+  margin: var(--grid-item-margin);
   display: grid;
 }
 
@@ -65,7 +80,8 @@ h3 {
 }
 
 #grid-floats .grid-item {
-  max-width: calc((100% - 10rem) / 4);
+  /* Calculation for four grid items that have margin on left and right sides (2 * margin-variable) */
+  max-width: calc((100% - 4 * 2 * var(--grid-item-margin)) / 4);
   float: left;
 }
 
@@ -85,14 +101,14 @@ li {
 
 li:hover {
   top: -5px;
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px var(--box-shadow);
 }
 
 ul p {
   margin: 0;
   padding: 15px;
   background: linear-gradient(rgba(255, 128, 8, 0.2), rgba(255, 200, 55, 0.1));
-  box-shadow: 0px -5px 8px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -5px 8px -5px var(--box-shadow);
 }
 
 #grid-flex {
@@ -154,41 +170,41 @@ ul p {
 /* a four column grid, with the exception that the first item spans two columns. */
 @media only screen and (min-width: 1080px) {
   #grid-floats .grid-item:nth-child(1) {
-    max-width: calc((100% - 5rem) / 2);
+    max-width: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
   }
   #grid-flex .grid-item:nth-child(1) {
-    flex-basis: calc((100% - 5rem) / 2);
+    flex-basis: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
   }
 }
 /* a three column grid, with the exception that the first two items span the full width together */
 @media only screen and (min-width: 720px) and (max-width: 1080px) {
   #grid-floats .grid-item {
-    max-width: calc((100% - 7.5rem) / 3);
+    max-width: calc((100% - 3 * 2 * var(--grid-item-margin)) / 3);
   }
   #grid-floats .grid-item:nth-child(-n + 2) {
-    max-width: calc((100% - 5rem) / 2);
+    max-width: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
   }
   #grid-flex .grid-item {
-    flex-basis: calc((100% - 7.5rem) / 3);
+    flex-basis: calc((100% - 3 * 2 * var(--grid-item-margin)) / 3);
   }
   #grid-flex .grid-item:nth-child(-n + 2) {
-    flex-basis: calc((100% - 5rem) / 2);
+    flex-basis: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
   }
 }
 /* a two column grid, with the exception that the first item spans the full width */
 @media only screen and (max-width: 720px) {
   #grid-floats .grid-item {
-    max-width: calc((100% - 5rem) / 2);
+    max-width: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
   }
   #grid-floats .grid-item:nth-child(1) {
-    max-width: calc(100% - 2.5rem);
+    max-width: calc(100% - 2 * var(--grid-item-margin));
     height: 40rem;
   }
   #grid-flex .grid-item {
-    flex-basis: calc((100% - 5rem) / 2);
+    flex-basis: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
   }
   #grid-flex .grid-item:nth-child(1) {
-    flex-basis: calc(100% - 2.5rem);
+    flex-basis: calc(100% - 2 * var(--grid-item-margin));
     height: 40rem;
   }
   .grid-item p {

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Spectral+SC:400,700|Merriweather&display=swap");
 /* CSS variables */
 :root {
-  --grid-item-margin : 1.25rem; /* Controls the margin for grid items */
+  --grid-item-margin: 1.25rem; /* Controls the margin for grid items */
   --body-background-color: #e7f3ff;
   --heading-color: #393399;
   --box-shadow: rgba(0, 0, 0, 0.3);
@@ -17,7 +17,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: inherit;
 }
 
@@ -45,7 +47,9 @@ img {
   margin: 0 auto;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: "Spectral SC", Georgia, serif;
   clear: both;
   color: var(--heading-color);
@@ -73,6 +77,8 @@ h3 {
 }
 
 .grid-item {
+  /* Calculation for four grid items that have margin on left and right sides (2 * margin-variable) */
+  width: calc((100% - 4 * 2 * var(--grid-item-margin)) / 4);
   box-shadow: 0px 5px 25px 0px var(--box-shadow);
   border-radius: 5px;
   background-color: #fff;
@@ -81,14 +87,13 @@ h3 {
   display: grid;
 }
 
-#grid-floats, #grid-flex {
+#grid-floats,
+#grid-flex {
   width: 100%;
   padding: 0 0.5rem;
 }
 
 #grid-floats .grid-item {
-  /* Calculation for four grid items that have margin on left and right sides (2 * margin-variable) */
-  max-width: calc((100% - 4 * 2 * var(--grid-item-margin)) / 4);
   float: left;
 }
 
@@ -118,15 +123,15 @@ ul p {
   box-shadow: 0px -5px 8px -5px var(--box-shadow);
 }
 
+.grid-item > p[dir="rtl"] {
+  text-align: right;
+}
+
 #grid-flex {
   display: flex;
   flex-flow: row wrap;
 }
 
-#grid-flex .grid-item {
-  flex: 0 0 calc((100% - 10rem) / 4);
-  justify-content: space-between;
-}
 
 /* SVG Black Friday Sale icon with heart beat animation*/
 .grid-item:nth-child(1)::before {
@@ -176,42 +181,26 @@ ul p {
 }
 /* a four column grid, with the exception that the first item spans two columns. */
 @media only screen and (min-width: 1080px) {
-  #grid-floats .grid-item:nth-child(1) {
-    max-width: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
-  }
-  #grid-flex .grid-item:nth-child(1) {
-    flex-basis: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
+  .grid-item:nth-child(1) {
+    width: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
   }
 }
 /* a three column grid, with the exception that the first two items span the full width together */
 @media only screen and (min-width: 720px) and (max-width: 1080px) {
-  #grid-floats .grid-item {
-    max-width: calc((100% - 3 * 2 * var(--grid-item-margin)) / 3);
+  .grid-item {
+    width: calc((100% - 3 * 2 * var(--grid-item-margin)) / 3);
   }
-  #grid-floats .grid-item:nth-child(-n + 2) {
-    max-width: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
-  }
-  #grid-flex .grid-item {
-    flex-basis: calc((100% - 3 * 2 * var(--grid-item-margin)) / 3);
-  }
-  #grid-flex .grid-item:nth-child(-n + 2) {
-    flex-basis: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
+  .grid-item:nth-child(-n + 2) {
+    width: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
   }
 }
 /* a two column grid, with the exception that the first item spans the full width */
 @media only screen and (max-width: 720px) {
-  #grid-floats .grid-item {
-    max-width: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
+  .grid-item {
+    width: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
   }
-  #grid-floats .grid-item:nth-child(1) {
-    max-width: calc(100% - 2 * var(--grid-item-margin));
-    height: 40rem;
-  }
-  #grid-flex .grid-item {
-    flex-basis: calc((100% - 2 * 2 * var(--grid-item-margin)) / 2);
-  }
-  #grid-flex .grid-item:nth-child(1) {
-    flex-basis: calc(100% - 2 * var(--grid-item-margin));
+  .grid-item:nth-child(1) {
+    width: calc(100% - 2 * var(--grid-item-margin));
     height: 40rem;
   }
   .grid-item p {

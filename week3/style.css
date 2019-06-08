@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -123,10 +124,32 @@ header .logo {
   clear: both;
 }
 
-navbar::before,
-navbar::after {
+.navbar::before,
+.navbar::after {
   content: ' ';
   display: table;
+}
+
+.fixednav #navbar {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  top: 0;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+}
+.fixednavhide #navbar {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transition: transform 0.2s ease-in-out;
+}
+.fixednavshow #navbar {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transition: transform 0.4s ease-in-out;
 }
 
 .navbar .wrapper {
@@ -208,7 +231,7 @@ navbar .wrapper::after {
   flex: 1 1 100%;
   flex-wrap: wrap;
   /* max-height: 0; */
-  animation: navSlideDown 500ms ease-in-out;
+  animation: navSlideDown 800ms ease-in-out;
 }
 
 @media (min-width: 768px) {
@@ -221,6 +244,8 @@ navbar .wrapper::after {
     overflow: visible;
   }
 }
+
+/* Burger icon and transition with pure CSS */
 
 .nav-toggle {
   display: none;
@@ -249,11 +274,19 @@ navbar .wrapper::after {
   position: relative;
 }
 
+.nav-toggle-label span {
+  -webkit-transition: all ease-out 250ms;
+  -moz-transition: all ease-out 250ms;
+  transition: all ease-out 250ms;
+}
+
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
   content: '';
   position: absolute;
-  transition: all ease-in-out 400ms;
+  -webkit-transition: all cubic-bezier(0.4, 0, 1, 1) 400ms;
+  -moz-transition: all cubic-bezier(0.4, 0, 1, 1) 400ms;
+  transition: all cubic-bezier(0.4, 0, 1, 1) 400ms;
 }
 
 .nav-toggle-label span::before {
@@ -270,6 +303,8 @@ navbar .wrapper::after {
     visibility: hidden;
   }
 }
+
+/* Controlling on-click event with checkbox:checked pseudo element */
 
 .nav-toggle:checked ~ .nav-burger .nav-toggle-label span {
   background: #01689b;
@@ -350,6 +385,7 @@ navbar .wrapper::after {
   -moz-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   z-index: 9999;
 }
 
@@ -463,9 +499,18 @@ main .wrapper::after {
   margin-top: 0;
   color: #000;
   text-shadow: none;
-  margin-bottom: 0.755em;
-  line-height: 1.55rem;
-  font-size: 1.625rem;
+  margin-bottom: 0.555em;
+  line-height: 1.875rem;
+  font-size: 1.325rem;
+  font-weight: normal;
+}
+
+@media (min-width: 992px) {
+  .toptasknavigation h2 {
+    margin-bottom: 0.755em;
+    line-height: 1.55rem;
+    font-size: 1.625rem;
+  }
 }
 
 .toptasknavigation ul li {
@@ -491,7 +536,6 @@ main .headerimage .slide {
   height: 100%;
   background-size: cover;
   background-position: center center;
-  background-image: url('widescreen-schoolvakanties-hero.jpg');
   z-index: 0;
 }
 
@@ -940,10 +984,11 @@ footer .wrapper .column {
 }
 
 footer .wrapper .column h2 {
-  font-size: 1.5em;
+  font-size: 1.25em;
   margin: 8px 0 5px 0;
   padding-top: 0;
   color: #fff;
+  font-weight: normal;
 }
 
 footer .wrapper .column ul {

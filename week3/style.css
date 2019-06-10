@@ -129,7 +129,7 @@ header .logo {
   content: ' ';
   display: table;
 }
-
+/* Fixed navbar below 768px width for viewport */
 .fixednav #navbar {
   position: fixed;
   z-index: 999;
@@ -139,12 +139,14 @@ header .logo {
   transform: translateY(-100%);
   -ms-transform: translateY(-100%);
 }
+/* Use this while scrolling down */
 .fixednavhide #navbar {
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
   -ms-transform: translateY(-100%);
   transition: transform 0.2s ease-in-out;
 }
+/* Use this while scrolling up */
 .fixednavshow #navbar {
   -webkit-transform: translateY(0px);
   transform: translateY(0px);
@@ -195,7 +197,6 @@ navbar .wrapper::after {
 }
 
 .navbar .nav-burger {
-  /* margin-right: 15px; */
   flex: 1 1 auto;
   order: 1;
   align-items: center;
@@ -230,8 +231,18 @@ navbar .wrapper::after {
   display: none;
   flex: 1 1 100%;
   flex-wrap: wrap;
-  /* max-height: 0; */
-  animation: navSlideDown 800ms ease-in-out;
+  animation: navslidedown 800ms ease-in-out;
+}
+
+@keyframes navslidedown {
+  from {
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    max-height: 600px;
+    overflow: visible;
+  }
 }
 
 @media (min-width: 768px) {
@@ -257,12 +268,11 @@ navbar .wrapper::after {
   right: 0;
   display: flex;
   align-items: center;
-  /* justify-content: flex-end; */
   height: 100%;
-  /* width: 40px; */
   cursor: pointer;
 }
 
+/* Burger menu Icon with CSS */
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
@@ -274,6 +284,7 @@ navbar .wrapper::after {
   position: relative;
 }
 
+/* Burger menu Icon transformation after click */
 .nav-toggle-label span {
   -webkit-transition: all ease-out 250ms;
   -moz-transition: all ease-out 250ms;
@@ -321,8 +332,8 @@ navbar .wrapper::after {
 }
 
 .nav-toggle:checked ~ .mainnav ul {
+  /* Show menu after checkbox's checked state */
   display: block;
-  /* max-height: 600px; */
 }
 
 .mainnav ul li {
@@ -1066,16 +1077,5 @@ footer .languages .wrapper ul li a {
 @media (min-width: 480px) {
   footer .languages .wrapper ul li.selected a {
     margin: 5px 10px 5px 0;
-  }
-}
-
-@keyframes navSlideDown {
-  from {
-    max-height: 0;
-    overflow: hidden;
-  }
-  to {
-    max-height: 600px;
-    overflow: visible;
   }
 }

@@ -22,12 +22,10 @@ window.addEventListener("scroll", function () {
     //get body's top position relative to viewport and compare to scrollPos for determine the scrolling direction
     if (document.body.getBoundingClientRect().top < scrollPos) {
       // show fixed nav while scrolling down
-      // console.log("DOWN");
       addClassToElement(bodyElement, "fixednavhide");
       removeClassFromElement(bodyElement, "fixednavshow");
     } else {
       // show fixed nav while scrolling up
-      // console.log("UP");
       addClassToElement(bodyElement, "fixednavshow");
       removeClassFromElement(bodyElement, "fixednavhide");
     }
